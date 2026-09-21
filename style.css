@@ -79,3 +79,14 @@ body {
     color: #999;
     border-top: 2px solid #eee;
   }
+
+  .project li{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #ffc300;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
