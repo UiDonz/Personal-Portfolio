@@ -143,6 +143,59 @@ h2::after {
   font-size: 1.08rem;
 }
 
+/* ===== About gallery ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.gallery-item {
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.gallery-item img,
+.gallery-item video,
+.placeholder-box {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #000;
+}
+
+.gallery-item figcaption {
+  padding: 10px 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.placeholder-box {
+  display: grid;
+  place-items: center;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.gallery-item.placeholder {
+  border-style: dashed;
+  box-shadow: none;
+}
+
 /* ===== Projects ===== */
 #projects {
   display: grid;
