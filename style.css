@@ -1,34 +1,24 @@
-/* ===== Theme tokens ===== */
+
 :root {
-  --bg: #f7f8fb;
-  --surface: #ffffff;
-  --text: #1f2430;
-  --muted: #5b6475;
-  --border: #e3e6ee;
-  --accent: #2563eb;
-  --accent-soft: #e0e9ff;
-  --hero-from: #1e3a8a;
-  --hero-to: #2563eb;
-  --shadow: 0 4px 14px rgba(20, 30, 60, 0.08);
-  --shadow-hover: 0 10px 28px rgba(20, 30, 60, 0.14);
+  --black: #02010a;
+  --prussian: #04052e;
+  --twilight: #140152;
+  --navy: #22007c;
+  --electric: #0d00a4;
+
+  --bg: var(--black);
+  --surface: var(--prussian);
+  --text: #eeecff;
+  --muted: #a9a6d1;
+  --border: #1c1660;
+  --accent: var(--electric);        /* fills: buttons, bars */
+  --accent-bright: #a49cff;         /* text on dark: links, labels */
+  --accent-soft: var(--twilight);
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 10px 30px rgba(13, 0, 164, 0.45);
   --radius: 12px;
   --max-width: 860px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f131a;
-    --surface: #171c26;
-    --text: #e6e9ef;
-    --muted: #9aa3b5;
-    --border: #262d3b;
-    --accent: #60a5fa;
-    --accent-soft: #1e2a44;
-    --hero-from: #0b1f4d;
-    --hero-to: #1d4ed8;
-    --shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-    --shadow-hover: 0 10px 28px rgba(0, 0, 0, 0.5);
-  }
+  color-scheme: dark;
 }
 
 /* ===== Base ===== */
@@ -53,7 +43,7 @@ body {
 }
 
 a {
-  color: var(--accent);
+  color: var(--accent-bright);
 }
 
 /* ===== Header / hero ===== */
@@ -61,7 +51,14 @@ header {
   text-align: center;
   padding: 90px 20px 80px;
   color: #fff;
-  background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+  background: linear-gradient(
+    135deg,
+    var(--black) 0%,
+    var(--prussian) 25%,
+    var(--twilight) 50%,
+    var(--navy) 75%,
+    var(--electric) 100%
+  );
 }
 
 header h1 {
@@ -107,7 +104,7 @@ nav a {
 nav a:hover,
 nav a:focus-visible {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-bright);
   outline: none;
 }
 
@@ -134,7 +131,7 @@ h2::after {
   width: 56px;
   height: 4px;
   border-radius: 2px;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--electric), var(--accent-bright));
 }
 
 #about p {
@@ -173,7 +170,7 @@ h2::after {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  background: #000;
+  background: var(--black);
 }
 
 .gallery-item figcaption {
@@ -186,7 +183,7 @@ h2::after {
   display: grid;
   place-items: center;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-bright);
   font-weight: 600;
   font-size: 0.95rem;
 }
@@ -214,7 +211,7 @@ h2::after {
   padding: 24px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-top: 4px solid var(--accent);
+  border-top: 4px solid var(--navy);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   transition: transform 0.2s, box-shadow 0.2s;
@@ -251,7 +248,7 @@ h2::after {
 }
 
 .project a:hover {
-  filter: brightness(1.12);
+  filter: brightness(1.35);
 }
 
 /* ===== Skills ===== */
@@ -268,7 +265,8 @@ ul.skills li {
   padding: 8px 18px;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-bright);
+  border: 1px solid var(--navy);
   font-weight: 600;
   font-size: 0.95rem;
   transition: transform 0.15s;
