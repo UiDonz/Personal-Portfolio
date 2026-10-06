@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Donovin Bermudez</title>
  <link rel="stylesheet" href="style.css">
+ <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+ <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -23,7 +25,7 @@
 <section id="about">
   <h2>About Me</h2>
   <p>
-    Hi, I'm Your Donovin Bermudez. I'm a programmer who enjoys designing websites and building them from the ground up.
+    Hi, I'm Donovin Bermudez. I'm a programmer who enjoys designing websites and building them from the ground up.
     I am a Computer Programming Information Systems Major with a minor in CyberSecurity. I enjoy watching UFC, getting together with friends, 
     and raving!
   </p>
@@ -47,8 +49,13 @@
 
 <div class="project">
   <h3>Senior Project - NewRamCentral</h3>
-  <p>-----CURRENTLY WORKING ON STAY TUNED----------</p>
-  <a href="#">View Project</a>
+  <img src="images/gallery/Screenshot 2026-10-05 at 11.25.31 AM.png" alt = "NewRamCentral Login Page">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <a href="https://github.com/UiDonz/ramcentral-web">View Project</a>
   <br>
   <ul class="skills">
     <li>Javascript</li>
@@ -59,14 +66,24 @@
 </div>
 
 <div class="project">
-  <h3>UNO</h3>
-  <p>---------</p>
-  <a href="#">View Project</a>
+  <h3>IOS App Development</h3>
+  <br>
+  <br>
+  <img src="images/gallery/AppBreweryLogo-1.png" alt = "App development company logo">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <a href="https://github.com/UiDonz/Calculator-Layout-iOS13">View Project</a>
   <br>
   <ul class="skills">
-    <li>Java</li>
-    <li>JavaFXML</li>
-    <li>Java GUI</li>
+    <li>Swift</li>
+    <li>SwiftUi</li>
+    <li>App Development</li>
   </ul>
 </div>
 </section>
@@ -85,8 +102,7 @@
   </ul>
 </section>
 
- <br>
-  <br>
+<section id="interests">
   <h2>My interests outside of coding</h2>
   <div class="gallery">
       <figure class="gallery-item">
@@ -95,8 +111,8 @@
       </figure>
 
       <figure class="gallery-item">
-        <video src="images/gallery/IMG_8552.mp4" controls muted playsinline preload="metadata"></video>
-        <figcaption>Restricted at Brooklyn StoreHouse</figcaption>
+        <video src="images/gallery/Rave2.mp4" controls muted playsinline preload="metadata"></video>
+        <figcaption>Jazzy B2B Nikolina at Brooklyn StoreHouse</figcaption>
       </figure>
 
       <figure class="gallery-item">
@@ -104,13 +120,47 @@
         <figcaption>Experts Only Fest 2026!</figcaption>
       </figure>
   </div>
+</section>
 
 <section id="contact">
   <h2>Contact</h2>
   <p>Email: donovin12131415@gmail.com</p>
   <p>GitHub: <a href="#">https://github.com/UiDonz</a></p>
   <p>LinkedIn: <a href="#">https://www.linkedin.com/in/donovin-bermudez-0ba94b291/</a></p>
+
+  
+  <button id="show-popup" class="btn" type="button">Show Contact Form</button>
 </section>
+<div id="popup-form-container" hidden>
+  <form id="contact-form" role="dialog" aria-modal="true" aria-labelledby="contact-form-heading">
+    <button type="button" id="close-popup" class="popup-close" aria-label="Close contact form">&times;</button>
+    <h3 id="contact-form-heading">Send me a message</h3>
+    <div class="form-row form-error" role="alert" style="display:none;"></div>
+    <div class="form-row form-success" role="status" style="display:none;"></div>
+    <div class="form-row">
+      <label for="contact-form-name">Name</label>
+      <input id="contact-form-name" class="form-input" type="text" name="name" required>
+    </div>
+    <div class="form-row">
+      <label for="contact-form-email">Email</label>
+      <input id="contact-form-email" class="form-input" type="email" name="email" required>
+    </div>
+    <div class="form-row">
+      <label for="contact-form-phone">Phone <span class="optional">(optional)</span></label>
+      <input id="contact-form-phone" class="form-input" type="tel" name="phone">
+    </div>
+    <div class="form-row">
+      <label for="contact-form-title">Title</label>
+      <input id="contact-form-title" class="form-input" type="text" name="title" required>
+    </div>
+    <div class="form-row">
+      <label for="contact-form-message">Message</label>
+      <textarea id="contact-form-message" class="form-input" name="message" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn">Submit</button>
+  </form>
+</div>
+
 
 <footer>
   <p>&copy; 2026 Donovin Bermudez. All rights reserved.</p>
