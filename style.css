@@ -11,8 +11,8 @@
   --text: #eeecff;
   --muted: #a9a6d1;
   --border: #1c1660;
-  --accent: var(--electric);        /* fills: buttons, bars */
-  --accent-bright: #a49cff;         /* text on dark: links, labels */
+  --accent: var(--electric);       
+  --accent-bright: #a49cff;         
   --accent-soft: var(--twilight);
   --shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
   --shadow-hover: 0 10px 30px rgba(13, 0, 164, 0.45);
@@ -30,7 +30,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* keeps headings clear of the sticky nav */
+  scroll-padding-top: 80px; 
 }
 
 body {
@@ -486,4 +486,23 @@ textarea.form-input {
   cursor: wait;
   filter: none;
   box-shadow: none;
+}
+.contact-btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.contact-btn:hover {
+  filter: brightness(1.12);
+}
+
+#captcha-box {
+  margin-top: 8px;
 }

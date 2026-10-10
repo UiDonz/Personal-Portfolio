@@ -7,6 +7,7 @@
  <link rel="stylesheet" href="style.css">
  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
  <script src="script.js" defer></script>
+ <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -122,44 +123,37 @@
   </div>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: donovin12131415@gmail.com</p>
-  <p>GitHub: <a href="#">https://github.com/UiDonz</a></p>
-  <p>LinkedIn: <a href="#">https://www.linkedin.com/in/donovin-bermudez-0ba94b291/</a></p>
+<section id="contact me!">
+  <h2>To Contact Me</h2>
+  <button id="contact-btn" class="contact-btn" type="button">Contact Me</button>
+  <div id="captcha-box"></div>
 
-  
-  <button id="show-popup" class="btn" type="button">Show Contact Form</button>
+  <div id="contact-info" hidden>
+    <p>Email: <a id="email-link"></a></p>
+    <p>GitHub: <a href="https://github.com/UiDonz">github.com/UiDonz</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/donovin-bermudez-0ba94b291/">linkedin.com/in/donovin-bermudez</a></p>
+  </div>
 </section>
-<div id="popup-form-container" hidden>
-  <form id="contact-form" role="dialog" aria-modal="true" aria-labelledby="contact-form-heading">
-    <button type="button" id="close-popup" class="popup-close" aria-label="Close contact form">&times;</button>
-    <h3 id="contact-form-heading">Send me a message</h3>
-    <div class="form-row form-error" role="alert" style="display:none;"></div>
-    <div class="form-row form-success" role="status" style="display:none;"></div>
-    <div class="form-row">
-      <label for="contact-form-name">Name</label>
-      <input id="contact-form-name" class="form-input" type="text" name="name" required>
-    </div>
-    <div class="form-row">
-      <label for="contact-form-email">Email</label>
-      <input id="contact-form-email" class="form-input" type="email" name="email" required>
-    </div>
-    <div class="form-row">
-      <label for="contact-form-phone">Phone <span class="optional">(optional)</span></label>
-      <input id="contact-form-phone" class="form-input" type="tel" name="phone">
-    </div>
-    <div class="form-row">
-      <label for="contact-form-title">Title</label>
-      <input id="contact-form-title" class="form-input" type="text" name="title" required>
-    </div>
-    <div class="form-row">
-      <label for="contact-form-message">Message</label>
-      <textarea id="contact-form-message" class="form-input" name="message" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn">Submit</button>
-  </form>
-</div>
+
+<script>
+  const SITE_KEY = "YOUR_SITE_KEY";
+
+  document.getElementById("contact-btn").addEventListener("click", (e) => {
+    if (!window.grecaptcha || !grecaptcha.render) return; // script still loading
+    e.currentTarget.hidden = true;
+    grecaptcha.render("captcha-box", { sitekey: SITE_KEY, callback: showContact });
+  });
+
+  function showContact() {
+    // Split up so the full address never appears in the HTML
+    const email = ["donovin12131415", "gmail.com"].join("@");
+    const link = document.getElementById("email-link");
+    link.href = "mailto:" + email;
+    link.textContent = email;
+    document.getElementById("captcha-box").hidden = true;
+    document.getElementById("contact-info").hidden = false;
+  }
+</script>
 
 
 <footer>
