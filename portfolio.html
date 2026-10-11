@@ -1,9 +1,24 @@
+<!--
+  portfolio.html
+  Donovin Bermudez - Personal Portfolio (BCS 377 Web Development Frameworks)
+
+  Single-page portfolio. Sections, top to bottom:
+    header    - name and title banner
+    nav       - sticky links to each section (#about, #projects, #skills, #contact)
+    #about    - short bio
+    #projects - one .project card per project
+    #skills   - list of skills shown as pill tags
+    #contact  - email, GitHub and LinkedIn
+    footer    - copyright
+
+  All styling lives in styles.css. Nav links jump to sections by their id,-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Donovin Bermudez</title>
+<!-- External stylesheet: colors, layout, dark mode and mobile styles -->
  <link rel="stylesheet" href="style.css">
  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
  <script src="script.js" defer></script>
@@ -15,14 +30,14 @@
   <h1>Donovin Bermudez</h1>
   <p>Computer Programmer/IT/CyberSecurity </p>
 </header>
-
+<!-- Navigation: stays at the top while scrolling. Each href matches a section id below -->
 <nav>
   <a href="#about">About me</a>
   <a href="#projects">Projects</a>
   <a href="#skills">Skills</a>
   <a href="#contact">Contact</a>
 </nav>
-
+<!-- About Me: major, minor and personal interests -->
 <section id="about">
   <h2>About Me</h2>
   <p>
@@ -31,7 +46,12 @@
     and raving!
   </p>
 </section>
-
+<!--
+  Projects: each project is a <div class="project"> card (title, description, link).
+  The cards sit in a responsive grid defined in styles.css.
+  To add a project, copy one card and change its text and link.
+  TODO: replace the placeholder descriptions and the "#" links with real ones.
+-->
 <section id="projects">
   <h2>Projects</h2>
   <div class="project">
@@ -122,7 +142,11 @@
       </figure>
   </div>
 </section>
-
+<!--
+  Contact: email, GitHub and LinkedIn.
+  TODO: point the GitHub and LinkedIn hrefs at the real URLs (they are "#" right now).
+  Planned: hide these behind a "Contact Me" button with Google reCAPTCHA v2 (see README.md).
+-->
 <section id="contact me!">
   <h2>To Contact Me</h2>
   <button id="contact-btn" class="contact-btn" type="button">Contact Me</button>
@@ -155,7 +179,7 @@
   }
 </script>
 
-
+<!-- Footer: copyright notice -->
 <footer>
   <p>&copy; 2026 Donovin Bermudez. All rights reserved.</p>
 </footer>

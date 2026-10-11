@@ -1,8 +1,14 @@
+/**
+ * Opens the popup and moves keyboard focus to the name field,
+ * so the visitor can start typing right away.
+ */
 function showPopupForm() {
   document.getElementById("popup-form-container").hidden = false;
   document.getElementById("contact-form-name").focus();
 }
-
+/**
+ * Closes the popup. Any text already typed stays in the form.
+ */
 function hidePopupForm() {
   document.getElementById("popup-form-container").hidden = true;
 }
@@ -10,10 +16,12 @@ function hidePopupForm() {
 document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("popup-form-container");
 
+ // Open button
   document.getElementById('show-popup').addEventListener('click', () => {
     showPopupForm();
   });
 
+// × close button
   document.getElementById('close-popup').addEventListener('click', () => {
     hidePopupForm();
   });
@@ -23,10 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === popup) hidePopupForm();
   });
 
+  // Close with the Escape key (works anywhere on the page)
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') hidePopupForm()
   });
 
+    // Form submission
   document.getElementById("contact-form").addEventListener("submit", (event) => {
     // Send with EmailJS instead of navigating to another page
     event.preventDefault();
