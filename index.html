@@ -8,7 +8,7 @@
     #about    - short bio
     #projects - one .project card per project
     #skills   - list of skills shown as pill tags
-    #contact  - email, GitHub and LinkedIn
+    #contact  - contact form, GitHub and LinkedIn
     footer    - copyright
 
   All styling lives in styles.css.-->
@@ -22,7 +22,6 @@
  <link rel="stylesheet" href="style.css">
  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
  <script src="script.js" defer></script>
- <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -142,41 +141,38 @@
       </figure>
   </div>
 </section>
-<!--
-  Contact: email, GitHub and LinkedIn.
-  Planned: hide these behind a "Contact Me" button with Google reCAPTCHA v2 (see README.md).
--->
-<section id="contact me!">
-  <h2>To Contact Me</h2>
-  <button id="contact-btn" class="contact-btn" type="button">Contact Me</button>
-  <div id="captcha-box"></div>
+<!-- Contact: message form (sent with EmailJS in script.js), plus GitHub and LinkedIn -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form id="contact-form" novalidate>
+    <div class="form-row">
+      <label for="contact-form-name">Name</label>
+      <input id="contact-form-name" class="form-input" type="text" name="name" required>
+    </div>
+    <div class="form-row">
+      <label for="contact-form-email">Email</label>
+      <input id="contact-form-email" class="form-input" type="email" name="email" required>
+    </div>
+    <div class="form-row">
+      <label for="contact-form-phone">Phone <span class="optional">(optional)</span></label>
+      <input id="contact-form-phone" class="form-input" type="tel" name="phone" placeholder="10 digits">
+    </div>
+    <div class="form-row">
+      <label for="contact-form-title">Subject</label>
+      <input id="contact-form-title" class="form-input" type="text" name="title" required>
+    </div>
+    <div class="form-row">
+      <label for="contact-form-message">Message</label>
+      <textarea id="contact-form-message" class="form-input" name="message" required></textarea>
+    </div>
+    <div class="form-error"></div>
+    <div class="form-success"></div>
+    <button class="btn" type="submit">Submit</button>
+  </form>
 
-  <div id="contact-info" hidden>
-    <p>Email: <a id="email-link"></a></p>
-    <p>GitHub: <a href="https://github.com/UiDonz">github.com/UiDonz</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/donovin-bermudez-0ba94b291/">linkedin.com/in/donovin-bermudez</a></p>
-  </div>
+  <p>GitHub: <a href="https://github.com/UiDonz">github.com/UiDonz</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/donovin-bermudez-0ba94b291/">linkedin.com/in/donovin-bermudez</a></p>
 </section>
-
-<script>
-  const SITE_KEY = "YOUR_SITE_KEY";
-
-  document.getElementById("contact-btn").addEventListener("click", (e) => {
-    if (!window.grecaptcha || !grecaptcha.render) return; // script still loading
-    e.currentTarget.hidden = true;
-    grecaptcha.render("captcha-box", { sitekey: SITE_KEY, callback: showContact });
-  });
-
-  function showContact() {
-    // Split up so the full address never appears in the HTML
-    const email = ["donovin12131415", "gmail.com"].join("@");
-    const link = document.getElementById("email-link");
-    link.href = "mailto:" + email;
-    link.textContent = email;
-    document.getElementById("captcha-box").hidden = true;
-    document.getElementById("contact-info").hidden = false;
-  }
-</script>
 
 <!-- Footer: copyright notice -->
 <footer>
