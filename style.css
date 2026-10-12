@@ -1,35 +1,7 @@
  /*OVERVIEW
    --------
    A dark, blue-violet theme driven by CSS custom properties (variables).
-   Change a variable in :root and every element that uses it updates.
- 
-   TABLE OF CONTENTS (sections appear in the same order as the page)
-   -----------------
-    1. Design Tokens ........ colors, shadows, radius, max width
-    2. Base ................. box sizing, scrolling, body text, links
-    3. Header / Hero ........ gradient banner with name and tagline
-    4. Navigation ........... sticky, blurred menu bar
-    5. Sections ............. shared layout + h2 underline accent
-    6. About Gallery ........ photo/video grid with placeholders
-    7. Projects ............. responsive project cards
-    8. Skills ............... pill-shaped skill tags
-    9. Contact .............. contact info boxes
-   10. Footer
-   11. Small Screens ........ layout tweaks at 600px and below
-   12. Reduced Motion ....... respects the visitor's motion setting
-   13. Contact Form Popup ... buttons, modal overlay, fields, messages
- 
-   QUICK CUSTOMIZATION
-   -------------------
-   Whole color theme ........ the five palette variables in :root
-   Button color ............. --accent
-   Link / label color ....... --accent-bright
-   Card corner rounding ..... --radius
-   Content width ............ --max-width
-   Gallery column size ...... minmax(220px, 1fr) in .gallery
-   Project column size ...... minmax(240px, 1fr) in #projects
-   Mobile breakpoint ........ 600px in the "Small Screens" media query
-   ========================================================================== */
+   Change a variable in :root and every element that uses it updates.*/
 :root {
     /* --- Palette --- */
   --black: #02010a;

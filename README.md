@@ -250,3 +250,5 @@ Interactivity makes the site easier and more enjoyable to use. The navigation ba
 - [Google reCAPTCHA v2 documentation](https://developers.google.com/recaptcha/docs/display)
 - [Formspree](https://formspree.io/): option for a future contact form with server-side handling
 - [MDN Web Docs](https://developer.mozilla.org/): HTML, CSS and JavaScript reference
+-[Youtube](https://www.youtube.com/shorts/RYfwBXrE9Qo): To Add Recaptcha via Javascript
+-[Youtube](https://www.youtube.com/watch?v=-O5Nlvh2c8s): Video on adding emailJS into Project
