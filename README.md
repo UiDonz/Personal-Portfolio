@@ -39,7 +39,7 @@ The site is a single page with these sections:
 | About Me | My major and minor, what I enjoy building, and personal interests (UFC, friends, raving) |
 | Projects | MarketMate, NewRamCentral (Senior Project) and IOS Development, each with a short description and a "View Project" link |
 | Skills | HTML, CSS, JavaScript, Java, Python, Git |
-| Contact | Email, GitHub and LinkedIn, revealed through a "Contact Me" button protected by reCAPTCHA |
+| Contact | A contact form (sent with EmailJS), plus GitHub and LinkedIn links |
 | Footer | Copyright |
 
 **Q2.11: Will you use icons, images, or illustrations? Why?**
@@ -65,7 +65,7 @@ The content sits in a centered column (max 860px wide) so lines don't get too lo
 
 **Site map:**
 ```
-portfolio.html (single page)
+index.html (single page)
 ├── Header
 ├── Navigation ── About me | Projects | Skills | Contact
 ├── #about
@@ -173,7 +173,7 @@ I'm a Computer Programming Information Systems major with a minor in CyberSecuri
 Yes. I use the viewport meta tag, a CSS grid that rearranges itself (`auto-fit` / `minmax`), flexbox that wraps for the nav and skill tags, and a heading size that scales with screen width (`clamp()`). A media query at 600px reduces the padding and font sizes. Long links in the Contact section wrap instead of overflowing. I tested the page at desktop width and at phone width (375px).
 
 **Q2.9: How will consistency be maintained across pages?**
-All styling lives in one external stylesheet (`styles.css`) instead of inline styles. Colors, shadows, corner radius and max width are defined once as CSS variables (`--accent`, `--surface`, `--radius`, etc.) and reused everywhere. If I add more pages, they link the same stylesheet and automatically share the same look, and changing one variable updates the whole site.
+All styling lives in one external stylesheet (`style.css`) instead of inline styles. Colors, shadows, corner radius and max width are defined once as CSS variables (`--accent`, `--surface`, `--radius`, etc.) and reused everywhere. If I add more pages, they link the same stylesheet and automatically share the same look, and changing one variable updates the whole site.
 
 **Q2.10: How will accessibility be considered (contrast, font size, readability)?**
 - **Contrast:** dark text on light backgrounds, and light text on dark backgrounds in dark mode, with colors chosen to stay readable.
@@ -195,16 +195,16 @@ Answered under [Content Strategy](#3-content-strategy).
 - **Navigation:** a navigation bar that stays at the top while you scroll, with links that scroll smoothly to each section and highlight when hovered or focused
 - **Project buttons:** a "View Project" button on every project card, plus cards that lift on hover
 - **Skill tags:** grow slightly when hovered
-- **Contact:** a "Contact Me" button protected by Google reCAPTCHA v2
+- **Contact:** a contact form that sends me an email through EmailJS
 
 **Q3.2: Will your site include a contact form? How will it work?**
-The Contact section will have a "Contact Me" button. When it's clicked, a Google reCAPTCHA v2 "I'm not a robot" checkbox appears. Once the visitor passes it, my email address (as a clickable `mailto:` link), GitHub and LinkedIn are revealed. My email isn't written directly in the HTML, which helps protect it from spam bots that scrape websites for addresses. Because the site has no server, the captcha is only checked in the visitor's browser. Later I could add a full message form through a service like Formspree, which can check the captcha on its own server.
+Yes. The Contact section has a form with Name, Email, Phone (optional), Subject and Message fields. When the visitor clicks Submit, JavaScript checks that the required fields are filled in, that the email is valid, and that the phone number (if given) is 10 digits. If everything is valid, the form is sent to my email through EmailJS, so the site doesn't need its own server. My email address isn't shown on the page, which helps protect it from spam bots that scrape websites for addresses. My GitHub and LinkedIn links are listed below the form.
 
 **Q3.3: What JavaScript features will you implement?**
-- A click event listener on the "Contact Me" button
-- Rendering the reCAPTCHA widget with Google's reCAPTCHA API (`grecaptcha.render`)
-- A callback function that runs when the captcha passes and shows the hidden contact info
-- Building the email address in JavaScript so it isn't readable in the HTML source
+- A submit event listener on the contact form that stops the page from reloading
+- Form validation (required fields, an email regex and a 10-digit phone number regex)
+- Sending the form with EmailJS (`emailjs.sendForm`)
+- Error and success messages shown under the form, and a "Sending..." state on the Submit button
 
 Smooth scrolling and hover effects are handled with CSS, so the page stays lightweight.
 
@@ -213,22 +213,22 @@ Smooth scrolling and hover effects are handled with CSS, so the page stays light
 - Buttons brighten on hover, and project cards lift with a bigger shadow.
 - Skill tags grow slightly when hovered.
 - Clicking a nav link visibly scrolls to that section.
-- In the contact flow, the reCAPTCHA checkbox shows a green checkmark when it passes, and then the contact info appears right away.
+- The contact form shows a red error message if something is missing or invalid, the Submit button changes to "Sending..." while the message is sent, and a green success message appears when it goes through.
 
 **Q3.5: How does interactivity improve the user experience?**
-Interactivity makes the site easier and more enjoyable to use. The navigation bar stays visible and links scroll smoothly, so visitors can jump to any section without getting lost on a long page. Hover effects and visual feedback show what is clickable. The reCAPTCHA contact flow keeps contacting me simple for real people while protecting my email from bots. Overall, these touches make the portfolio feel polished and professional, which reflects the kind of work I want to show employers.
+Interactivity makes the site easier and more enjoyable to use. The navigation bar stays visible and links scroll smoothly, so visitors can jump to any section without getting lost on a long page. Hover effects and visual feedback show what is clickable. The contact form lets visitors message me without leaving the site, and it keeps my email address hidden from bots. Overall, these touches make the portfolio feel polished and professional, which reflects the kind of work I want to show employers.
 
 ## 7. Technical Overview
 
 | Item | Details |
 |---|---|
 | Languages | HTML5, CSS, JavaScript |
-| Files | `portfolio.html` (page structure and content), `styles.css` (all styling), `README.md` (this document) |
+| Files | `index.html` (page structure and content), `style.css` (all styling), `script.js` (contact form validation and sending), `README.md` (this document) |
 | Layout | CSS Grid (project cards), Flexbox (nav and skill tags), centered column with max width 860px |
 | Theming | CSS custom properties (variables) with automatic dark mode (`prefers-color-scheme`) |
 | Responsiveness | Viewport meta tag, `auto-fit` / `minmax` grid, `clamp()` font sizing, media query at 600px |
 | Accessibility | Semantic HTML, visible focus styles, `prefers-reduced-motion` support, readable font size and line height |
-| Third-party services | Google reCAPTCHA v2 (checkbox) for the contact section |
+| Third-party services | EmailJS for sending the contact form |
 | Version control | Git and GitHub |
 | Testing | Checked in the browser at desktop width and phone width (375px), in light and dark mode |
 
@@ -240,15 +240,9 @@ Interactivity makes the site easier and more enjoyable to use. The navigation ba
 | 2026-09-21 | Added more details (About Me, projects, skills, contact info) | Done |
 | 2026-09-27 | Added CSS styling: external stylesheet, card layout, sticky nav, dark mode, mobile layout | Done |
 | 2026-10-10 | Wrote the Web Design Document (this README) | Done |
-| TBD | Add the "Contact Me" button with Google reCAPTCHA v2 | Planned |
-| TBD | Write real project descriptions and connect the project, GitHub and LinkedIn links | Planned |
-| TBD | Add a profile photo, project screenshots and contact icons | Planned |
-| TBD | Final testing and publishing the site | Planned |
+| 2026-10-12 | Added the contact form with EmailJS | Done |
 
 ## 9. External Resources
-- [Google reCAPTCHA admin console](https://www.google.com/recaptcha/admin): register the site and get a site key
-- [Google reCAPTCHA v2 documentation](https://developers.google.com/recaptcha/docs/display)
-- [Formspree](https://formspree.io/): option for a future contact form with server-side handling
+- [EmailJS](https://www.emailjs.com/): sends the contact form to my email without a server
 - [MDN Web Docs](https://developer.mozilla.org/): HTML, CSS and JavaScript reference
--[Youtube](https://www.youtube.com/shorts/RYfwBXrE9Qo): To Add Recaptcha via Javascript
--[Youtube](https://www.youtube.com/watch?v=-O5Nlvh2c8s): Video on adding emailJS into Project
+- [Youtube](https://www.youtube.com/watch?v=-O5Nlvh2c8s): Video on adding emailJS into Project
